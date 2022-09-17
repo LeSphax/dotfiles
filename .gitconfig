@@ -1,0 +1,31 @@
+[user]
+	name = Sebastien
+	email = <EMAIL>
+[core]
+	editor = code --wait
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[alias]
+	co = checkout
+	st = status
+	ci = commit
+	br = branch
+	amend = "!git add .; git commit --amend --no-edit"
+	ampush = "!git amend; git push -f"
+	rmaster = "!git fetch; git push . origin/master:master; git rebase master"
+	mess = log -n 1 --pretty=format:%s
+	cleanbranches = "!git branch --merged | egrep -v '(^\\*|master|dev)' | xargs git branch -d"
+	branches = "!git branch --sort=-committerdate "
+	rebases = "!f() { BRANCHES=( origin/master "$@" ); arraylength=${#BRANCHES[@]}; for (( i=0; i<${arraylength} - 1; i++ )); do git rebase ${BRANCHES[$i]} ${BRANCHES[$i+1]}; done; }; f"
+	rebasepushes = "!f() { BRANCHES=( origin/master "$@" ); arraylength=${#BRANCHES[@]}; for (( i=0; i<${arraylength} - 1; i++ )); do git rebase ${BRANCHES[$i]} ${BRANCHES[$i+1]}; git push -f --no-verify origin ${BRANCHES[$i+1]}; done; }; f"
+	wip = "!git add .; git commit -m WIP"
+	res = "!git reset HEAD~"
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[push]
+	default = current
