@@ -1,6 +1,6 @@
 [user]
 	name = Sebastien
-	email = <EMAIL>
+	email = sebastien@picnichealt.com
 [core]
 	editor = code --wait
 [filter "lfs"]
