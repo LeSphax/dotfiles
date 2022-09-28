@@ -1,6 +1,6 @@
 [user]
 	name = Seb
-	email = sebastien@picnichealt.com
+	email = sebastien@picnichealth.com
 [core]
 	editor = code --wait
 [filter "lfs"]
